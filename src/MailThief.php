@@ -29,7 +29,7 @@ abstract class MailThief
 
     public static function instance()
     {
-        return app(MailThief::class);
+        return app('MailThief');
     }
 
     public function hijack()
@@ -41,7 +41,7 @@ abstract class MailThief
     protected function swapMail()
     {
         Mail::swap($this);
-        app()->instance(Mailer::class, $this);
+        app()->instance('MailThief', $this);
     }
 
     protected function loadGlobalFrom()
